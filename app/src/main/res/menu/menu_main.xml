@@ -9,6 +9,6 @@
         app:showAsAction="never" />
     <item
         android:title="@string/app_name"
-        app:showAsAction="always"
+        app:showAsAction="ifRoom"
         android:icon="@mipmap/pirozlogo_round"/>
 </menu>

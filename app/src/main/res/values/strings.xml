@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="AboutUS">درباره ما</string>
-    <string name="AlgorithVersion">تولید کد دستگاه های ورژن 20.5 و بعد از آن.</string>
+    <string name="AlgorithmVersion">تولید کد دستگاه های ورژن 20.5 و بعد از آن.</string>
     <string name="CalculateButtonText">محاسبه</string>
     <string name="CancelCode">کد کنـسـل :</string>
     <string name="EighthRegister">رجیستر 08 :</string>

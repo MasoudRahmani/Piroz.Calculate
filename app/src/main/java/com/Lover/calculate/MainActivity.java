@@ -1,15 +1,9 @@
 package com.Lover.calculate;
 
-import androidx.activity.result.ActivityResult;
-import androidx.activity.result.ActivityResultCallback;
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContract;
-import androidx.activity.result.contract.ActivityResultContracts;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
-import android.app.Activity;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
@@ -19,9 +13,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.content.ClipData;
-
-//import android.support.p003v7.app.AppCompatActivity;
-
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -41,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
     ClipboardManager _clipboardManager;
     private int _codeOne;
     View.OnClickListener _copyToClipboard = view -> {
-        if (MainActivity.this._isItCopyTime.booleanValue()) {
+        if (MainActivity.this._isItCopyTime) {
             MainActivity.this._clipboardManager.setPrimaryClip(ClipData.newPlainText("Generated Code", ((TextView) view).getText()));
             Toast.makeText(MainActivity.this, "کد کپی شد!", Toast.LENGTH_SHORT).show();
 
@@ -60,16 +51,10 @@ public class MainActivity extends AppCompatActivity {
     TextView _sevenRegister;
     TextView _sixRegister;
     View.OnFocusChangeListener _snEditTextOnFocusChangeListener = (view, z) -> {
-        if (z) {
-            if (MainActivity.this._serialNumberEditText.getText().toString().length() < 8) {
-                MainActivity.this._serialNumberEditText.setError("هشت رقم وارد کنید");
-            } else {
-                MainActivity.this._serialNumberEditText.setError((CharSequence) null);
-            }
-        } else if (MainActivity.this._serialNumberEditText.getText().toString().length() < 8) {
+        if (MainActivity.this._serialNumberEditText.getText().toString().length() < 8) {
             MainActivity.this._serialNumberEditText.setError("هشت رقم وارد کنید");
         } else {
-            MainActivity.this._serialNumberEditText.setError((CharSequence) null);
+            MainActivity.this._serialNumberEditText.setError(null);
         }
     };
     TextView _tenRegister;
@@ -78,25 +63,25 @@ public class MainActivity extends AppCompatActivity {
     /* access modifiers changed from: protected */
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        setContentView((int) R.layout.activity_main);
+        setContentView(R.layout.activity_main);
 
 
         this._clipboardManager = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
 
-        this._calculateButton = (Button) findViewById(R.id.CalculateButton);
-        this._serialNumberEditText = (EditText) findViewById(R.id.SnTxtInput);
-        this._firstRegister = (TextView) findViewById(R.id.firstRegister);
-        this._secondRegister = (TextView) findViewById(R.id.scndRegister);
-        this._thirdRegister = (TextView) findViewById(R.id.thrdRegister);
-        this._fourthRegister = (TextView) findViewById(R.id.fourthRegister);
-        this._fifthRegister = (TextView) findViewById(R.id.fifthRegister);
-        this._sixRegister = (TextView) findViewById(R.id.sixthRegister);
-        this._sevenRegister = (TextView) findViewById(R.id.seventhRegister);
-        this._eightRegister = (TextView) findViewById(R.id.eightRegister);
-        this._ninthRegister = (TextView) findViewById(R.id.ninthRegister);
-        this._tenRegister = (TextView) findViewById(R.id.TenthRegister);
-        this._oneYearRegister = (TextView) findViewById(R.id.OneYearCode);
-        this._cancelRegister = (TextView) findViewById(R.id.CancelCode);
+        this._calculateButton = findViewById(R.id.CalculateButton);
+        this._serialNumberEditText = findViewById(R.id.SnTxtInput);
+        this._firstRegister = findViewById(R.id.firstRegister);
+        this._secondRegister = findViewById(R.id.scndRegister);
+        this._thirdRegister = findViewById(R.id.thrdRegister);
+        this._fourthRegister = findViewById(R.id.fourthRegister);
+        this._fifthRegister = findViewById(R.id.fifthRegister);
+        this._sixRegister = findViewById(R.id.sixthRegister);
+        this._sevenRegister = findViewById(R.id.seventhRegister);
+        this._eightRegister = findViewById(R.id.eightRegister);
+        this._ninthRegister = findViewById(R.id.ninthRegister);
+        this._tenRegister = findViewById(R.id.TenthRegister);
+        this._oneYearRegister = findViewById(R.id.OneYearCode);
+        this._cancelRegister = findViewById(R.id.CancelCode);
         this._calculateButton.setOnClickListener(this._calculateButtonOnclickListener);
         this._serialNumberEditText.setOnFocusChangeListener(this._snEditTextOnFocusChangeListener);
 
@@ -135,6 +120,7 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
     /* access modifiers changed from: private */
     public void CalculateCodes() {
         this._firstRegister.setText(Integer.toString(CalculateCodeOne()));

@@ -4,8 +4,6 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.graphics.Typeface;
-import android.widget.TextView;
 
 
 public class AboutUsActivity extends AppCompatActivity {
