@@ -4,6 +4,7 @@ package com.Lover.calculate;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
@@ -22,12 +23,13 @@ public class MainActivity extends AppCompatActivity {
     Button _calculateButton;
     View.OnClickListener _calculateButtonOnclickListener = view -> {
         MainActivity.this._serialTextNumber = MainActivity.this._serialNumberEditText.getText().toString();
-        if (MainActivity.this._serialTextNumber.isEmpty() || MainActivity.this._serialTextNumber.length() != 8) {
+        if (MainActivity.this._serialTextNumber.length() != 8) {
             MainActivity.this._serialNumberEditText.setError("هشت رقم لطفا");
         } else {
             MainActivity.this.CalculateCodes();
         }
     };
+
     TextView _cancelRegister;
     ClipboardManager _clipboardManager;
     private int _codeOne;
@@ -114,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getTitle() == getResources().getString(R.string.AboutUS)) {
-            Intent settingsActivityIntent = new Intent(this, AboutUsActivity.class);// using explicity intent to open new activity
+            Intent settingsActivityIntent = new Intent(this, AboutUsActivity.class);// using explicitly intent to open new activity
             this.startActivity(settingsActivityIntent);
             return true;
         }
@@ -122,6 +124,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /* access modifiers changed from: private */
+    @SuppressLint("SetTextI18n")
     public void CalculateCodes() {
         this._firstRegister.setText(Integer.toString(CalculateCodeOne()));
         this._secondRegister.setText(Integer.toString(CalculateCodeTwo()));
