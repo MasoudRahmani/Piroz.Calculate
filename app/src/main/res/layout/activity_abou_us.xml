@@ -11,7 +11,8 @@
         android:fontFamily="@font/nasaliq"
         android:text="@string/Hagh"
         android:textAlignment="center"
-        android:textColor="@color/black"
+        android:textColor="?colorTertiary"
+
         android:textDirection="rtl"
         android:textSize="60sp" />
 
